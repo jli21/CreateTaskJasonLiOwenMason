@@ -1,7 +1,8 @@
 .playerCard {
-    position: relative;
+    position: fixed;
     height: 20%;
     width: 20%;
+    display: none;
 }
 
 #playerHand {
@@ -10,4 +11,26 @@
     bottom: 0px;
     top: auto;
     right:auto
+}
+
+#hitButton {
+    position: fixed;
+}
+
+#passButton {
+    position: fixed;
+}
+
+@keyframes slideIn {
+    from {
+        display: block;
+        left: 0;
+        top: 0;
+    }
+
+    to {
+        left: 100;
+        bottom: 0;
+        position: relative;
+    }
 }

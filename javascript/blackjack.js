@@ -6,7 +6,7 @@ var currentCard = 0;
 var currentDealerCard = 0;
 var randCard;
 var playerTurn = true;
-
+var score = 0;
 
 function hit() {
     if (playerTurn){
@@ -14,6 +14,9 @@ function hit() {
         randCard = Math.floor(Math.random() * deck.length);
         console.log(randCard);
         document.getElementById(`card${currentCard}`).src=`../images/${deck[randCard]}.png`;
+        document.getElementById(`card${currentCard}`).style.display = "block";
+        document.getElementById(`card${currentCard}`).style.animationDuration = "800ms";
+        document.getElementById(`card${currentCard}`).style.animationName = "slideIn";
         handValue.push(deckValue[randCard]);
         deckValue.splice(randCard, 1);
         deck.splice(randCard, 1);
@@ -34,6 +37,9 @@ function pass() {
         randCard = Math.floor(Math.random() * deck.length);
         console.log(randCard);
         document.getElementById(`dealerCard${currentDealerCard}`).src=`../images/${deck[randCard]}.png`;
+        document.getElementById(`dealerCard${currentCard}`).style.display = "block";
+        document.getElementById(`dealerCard${currentCard}`).style.animationDuration = "800ms";
+        document.getElementById(`dealerCard${currentCard}`).style.animationName = "slideIn";
         dealerValue.push(deckValue[randCard]);
         deckValue.splice(randCard, 1)
         deck.splice(randCard, 1);
@@ -68,7 +74,12 @@ function end() {
 }
 
 function win(winner) {
-    console.log(winner);
+    if (winner = "player") {
+        console.log(winner);
+    }
+    if (winner = "dealer") {
+        console.log(winner);
+    }
     reset();
 }
 
@@ -79,7 +90,6 @@ function reset() {
     dealerValue = [];
     currentCard = 0;
     currentDealerCard = 0;
-
 }
 
 function sum(array) {
