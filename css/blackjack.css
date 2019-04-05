@@ -1,36 +1,125 @@
 .playerCard {
-    position: fixed;
-    height: 20%;
-    width: 20%;
-    display: none;
+    height: 100%;
+    width: auto;
+    display: inline;
+    position: relative;
 }
 
+.interfaceButton {
+    background-color: orangered;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 5%;
+    width: 10%;
+    font-size: 95%;
+}
+
+.interfaceButton:hover {
+    font-size: 138%;
+    border-width: 3px;
+}
+
+.scoreHeader {
+    text-shadow: 0 1px 0 #ccc, 
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+    position: fixed;
+    color: orangered;
+    font-size: 40px;
+}
+
+body {
+    background-image: url("../Images/casino-felt-green.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+#deckPlaceholder {
+    height: 15%;
+    width: auto;
+    left: 5%;
+    top: 5%;
+    z-index: 3;
+    position: fixed;
+
+}
+#animationImg {
+    height: 15%;
+    width: auto;
+    animation-duration: 800ms;
+    position: fixed;
+    z-index: 2;
+    left: 5%;
+    top: 5%;
+}
 #playerHand {
     position: fixed;
-    left: 30px;
+    left: 0px;
     bottom: 0px;
     top: auto;
-    right:auto
+    right: auto;
+    background-color: lightblue;
+    width: 50%;
+    height: 15%;
+    z-index: 1;
+    border: 2px solid black;
+}
+
+#dealerHand {
+    position: fixed;
+    left: 50%;
+    top: 0px;
+    bottom: auto;
+    right: auto;
+    background-color: lightblue;
+    width: 100%;
+    height: 15%;
+    z-index: 1;
+    border: 2px solid black;
 }
 
 #hitButton {
     position: fixed;
+    left: 85%;
+    bottom: 28%;
 }
 
 #passButton {
     position: fixed;
+    left: 85%;
+    bottom: 22%;
 }
 
-@keyframes slideIn {
+@keyframes slideInPlayer {
     from {
-        display: block;
-        left: 0;
-        top: 0;
+        left: 5%;
+        top: 5%;
     }
 
     to {
-        left: 100;
-        bottom: 0;
-        position: relative;
+        top: 85%;
+        left: 15%;
+    }
+}
+
+@keyframes slideInDealer {
+    from {
+        left: 5%;
+        top: 5%;
+
+    }
+
+    to {
+        top: 0px;
+        left: 51%;
     }
 }

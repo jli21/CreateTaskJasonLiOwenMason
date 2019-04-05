@@ -5,6 +5,8 @@
     <script type="text/javascript" src="../javascript/blackjack.js"></script>
 </head>
 <body> 
+    <img src="../Images/gray_back.png" id="deckPlaceholder"/>
+    <img src="" id="animationImg"/>
     <div id="dealerHand">
         <img src="" id="dealerCard1" class="playerCard"/>
         <img src="" id="dealerCard2" class="playerCard"/>
@@ -16,9 +18,11 @@
         <img src="" id="dealerCard8" class="playerCard"/>
         <img src="" id="dealerCard9" class="playerCard"/>
     </div>
-    <button onclick="hit();" id="hitButton">Hit</button>
-    <button onclick="pass();" id="passButton">Pass</button>
-    <div id="payerHand">
+    <h2 class="scoreHeader" id="playerScoreHeader" style="bottom: 16%; left: 5%;">Player:</h2>
+    <button onclick="hit();" id="hitButton" class="interfaceButton">Hit</button>
+    <button onclick="manualPass();" id="passButton" class="interfaceButton">Pass</button>
+    <h2 class="scoreHeader" id="dealerScoreHeader" style="top: 16%; left: 55%;">Dealer:</h2>
+    <div id="playerHand">
         <img src="" id="card1" class="playerCard"/>
         <img src="" id="card2" class="playerCard"/>
         <img src="" id="card3" class="playerCard"/>
@@ -27,8 +31,7 @@
         <img src="" id="card6" class="playerCard"/>
         <img src="" id="card7" class="playerCard"/>
         <img src="" id="card8" class="playerCard"/>
-        <img src="" id="card9" class="playerCard"/>
-        
+        <img src="" id="card9" class="playerCard"/>       
     </div>
 
 </body>

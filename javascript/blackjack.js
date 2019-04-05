@@ -7,77 +7,106 @@ var currentDealerCard = 0;
 var randCard;
 var playerTurn = true;
 var score = 0;
+var playerHitDelay = false;
+var dealerHitDelay = false;
 
 function hit() {
-    if (playerTurn){
+    if (playerTurn && !playerHitDelay){
+        playerHitDelay = true;
         currentCard++;
         randCard = Math.floor(Math.random() * deck.length);
-        console.log(randCard);
-        document.getElementById(`card${currentCard}`).src=`../images/${deck[randCard]}.png`;
-        document.getElementById(`card${currentCard}`).style.display = "block";
-        document.getElementById(`card${currentCard}`).style.animationDuration = "800ms";
-        document.getElementById(`card${currentCard}`).style.animationName = "slideIn";
-        handValue.push(deckValue[randCard]);
-        deckValue.splice(randCard, 1);
-        deck.splice(randCard, 1);
-        console.log(sum(handValue));
-        if (sum(handValue) > 21 && handValue.includes(11)) {
-            handValue[handValue.indexOf(11)] = 1;
-        }
-        if (sum(handValue) > 21) {
-            playerTurn = false;
-            pass();
-        }
+        document.getElementById("animationImg").style.display = "block"
+        document.getElementById("animationImg").src = `../images/${deck[randCard]}.png`;
+        document.getElementById(`animationImg`).style.animationName = "slideInPlayer";
+        window.setTimeout('playerAnimationDelay()', 800);
+
     }
+}
+
+function playerAnimationDelay() {
+    document.getElementById("animationImg").style.display = "none";
+    document.getElementById(`card${currentCard}`).style.display = "inline";
+    document.getElementById(`card${currentCard}`).src = `../images/${deck[randCard]}.png`;
+    handValue.push(deckValue[randCard]);
+    deckValue.splice(randCard, 1);
+    deck.splice(randCard, 1);
+    console.log("playerVal: " + sum(handValue));
+    document.getElementById("playerScoreHeader").innerHTML ="Player: " + sum(handValue);
+        if (sum(handValue) > 21 && handValue.includes(11)) {
+        handValue[handValue.indexOf(11)] = 1;
+    }
+    if (sum(handValue) > 21) {
+        playerTurn = false;
+        pass();
+    } else {
+        playerHitDelay = false;    
+    }
+}
+function manualPass() {
+    playerTurn = false;
+    pass();
 }
 
 function pass() {
-    if (!playerTurn) {
+    if (!playerTurn && !dealerHitDelay) {
+        dealerHitDelay = true;
         currentDealerCard++;
         randCard = Math.floor(Math.random() * deck.length);
-        console.log(randCard);
-        document.getElementById(`dealerCard${currentDealerCard}`).src=`../images/${deck[randCard]}.png`;
-        document.getElementById(`dealerCard${currentCard}`).style.display = "block";
-        document.getElementById(`dealerCard${currentCard}`).style.animationDuration = "800ms";
-        document.getElementById(`dealerCard${currentCard}`).style.animationName = "slideIn";
-        dealerValue.push(deckValue[randCard]);
-        deckValue.splice(randCard, 1)
-        deck.splice(randCard, 1);
-        if (sum(dealerValue) > 21 && dealerValue.includes(11)) {
-            dealerValue[dealerValue.indexOf(11)] = 1;
-        }
-        if (sum(dealerValue) > 17) {
-            end();
-        } else {
-            pass();
-        }
+        document.getElementById("animationImg").style.display = "block";
+        document.getElementById("animationImg").src = `../images/${deck[randCard]}.png`;
+        document.getElementById(`animationImg`).style.animationName = "slideInDealer";
+        window.setTimeout('dealerAnimationDelay()', 800);
     }
 }
 
-function deal() {
-
+function dealerAnimationDelay() {
+    document.getElementById("animationImg").style.display = "none";
+    document.getElementById(`dealerCard${currentDealerCard}`).src=`../images/${deck[randCard]}.png`;
+    dealerValue.push(deckValue[randCard]);
+    deckValue.splice(randCard, 1)
+    deck.splice(randCard, 1);
+    console.log("dealerVal: " + sum(dealerValue));
+    document.getElementById("dealerScoreHeader").innerHTML ="Dealer: " + sum(dealerValue);
+    if (sum(dealerValue) > 21 && dealerValue.includes(11)) {
+        dealerValue[dealerValue.indexOf(11)] = 1;
+    }
+    if (sum(dealerValue) > 16) {
+        end();
+    } else {
+        dealerHitDelay = false;
+        pass();
+    }
+    
 }
 
 function end() {
+    console.log(sum(dealerValue));
     if (sum(handValue) > 21) {
-        win("dealer");
-    } else if (sum(dealerValue > 21)) {
-        win("player");
+        console.log("checkpoint2");
+        win("dealerWin");
+    } 
+    else if (sum(dealerValue) > 21) {
+        console.log("checkpoint3");
+        win("playerWin");
     }
     else if (sum(dealerValue) >= sum(handValue)){
-        win("dealer");
+        console.log("checkpoint4");
+
+        win("dealerWin");
     } 
     else if (sum(handValue) > sum(dealerValue)) {
-        win("player");
+        console.log("checkpoint5");
+
+        win("playerWin");
     }
     reset();
 }
 
 function win(winner) {
-    if (winner = "player") {
+    if (winner == "playerWin") {
         console.log(winner);
     }
-    if (winner = "dealer") {
+    else if (winner == "dealerWin") {
         console.log(winner);
     }
     reset();
