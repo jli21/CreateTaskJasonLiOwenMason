@@ -4,7 +4,12 @@
     <link rel="stylesheet" href="../css/blackjack.css">
     <script type="text/javascript" src="../javascript/blackjack.js"></script>
 </head>
-<body> 
+<body>
+    <button class="interfaceButton" style="left: 45%; bottom: 40%; display: none; position: fixed;" onclick="reset();" id="nextGameButton">Next Game</button>
+    <h2 class="scoreHeader" id="plusOne" style="display: none; position: fixed;">+1</h2>
+    <h2 class="scoreHeader" id="streak">Streak: 0</h2>
+    <h1 class="scoreHeader" id="playerWins">Player Wins</h1>
+    <h1 class="scoreHeader" id="dealerWins">Dealer Wins</h1>
     <img src="../Images/gray_back.png" id="deckPlaceholder"/>
     <img src="" id="animationImg"/>
     <div id="dealerHand">
@@ -18,10 +23,10 @@
         <img src="" id="dealerCard8" class="playerCard"/>
         <img src="" id="dealerCard9" class="playerCard"/>
     </div>
-    <h2 class="scoreHeader" id="playerScoreHeader" style="bottom: 16%; left: 5%;">Player:</h2>
+    <h2 class="scoreHeader" id="playerScoreHeader" style="bottom: 16%; left: 5%;">Player: 0</h2>
     <button onclick="hit();" id="hitButton" class="interfaceButton">Hit</button>
     <button onclick="manualPass();" id="passButton" class="interfaceButton">Pass</button>
-    <h2 class="scoreHeader" id="dealerScoreHeader" style="top: 16%; left: 55%;">Dealer:</h2>
+    <h2 class="scoreHeader" id="dealerScoreHeader" style="top: 16%; left: 55%;">Dealer: 0</h2>
     <div id="playerHand">
         <img src="" id="card1" class="playerCard"/>
         <img src="" id="card2" class="playerCard"/>

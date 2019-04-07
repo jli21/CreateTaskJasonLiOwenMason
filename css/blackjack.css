@@ -1,3 +1,9 @@
+body {
+    background-image: url("../Images/casino-felt-green.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
 .playerCard {
     height: 100%;
     width: auto;
@@ -35,12 +41,6 @@
     position: fixed;
     color: orangered;
     font-size: 40px;
-}
-
-body {
-    background-image: url("../Images/casino-felt-green.jpg");
-    background-repeat: no-repeat; 
-    background-size: cover;
 }
 
 #deckPlaceholder {
@@ -99,6 +99,33 @@ body {
     bottom: 22%;
 }
 
+#playerWins {
+    position: fixed;
+    left: 45%;
+    top: 45%;
+    display: none;
+    font-size: 200%;
+}
+
+#dealerWins {
+    position: fixed;
+    left: 45%;
+    top: 45%;
+    display: none;
+    font-size: 200%;
+}
+
+#streak {
+    position: fixed;
+    left: 22%;
+    bottom: 16%;
+}
+
+#plusOne {
+    display: none;
+    animation-direction: 1500ms;
+}
+
 @keyframes slideInPlayer {
     from {
         left: 5%;
@@ -121,5 +148,16 @@ body {
     to {
         top: 0px;
         left: 51%;
+    }
+}
+
+@keyframes plusOne {
+    from {
+        left: 25%;
+        bottom: 16%;
+    }
+    to {
+        bottom: 20%;
+        left: 26%;
     }
 }
