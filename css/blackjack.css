@@ -150,14 +150,3 @@ body {
         left: 51%;
     }
 }
-
-@keyframes plusOne {
-    from {
-        left: 25%;
-        bottom: 16%;
-    }
-    to {
-        bottom: 20%;
-        left: 26%;
-    }
-}
